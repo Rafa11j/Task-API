@@ -1,0 +1,20 @@
+spring:
+  jpa:
+    database: POSTGRESQL
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+  datasource:
+    platform: postgres
+    username: postgres
+    password: postgres
+    url: jdbc:postgresql://localhost:5432/db_desafio_accenture
+    driver-class-name: org.postgresql.Driver
+    hikari:
+      auto-commit: true
+#  flyway:
+#    clean-disabled: false
+#    clean-on-validation-error: false
+#    table: migrations_history
+#    locations:
+#      - classpath:db/migrations
