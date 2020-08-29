@@ -1,6 +1,7 @@
 package br.com.taskapi.domain.taskItem;
 
 import br.com.taskapi.domain.taskList.TaskList;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -27,8 +28,9 @@ public class TaskItem {
     @Column(columnDefinition = "boolean default false")
     private boolean finished;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "task_list_id", nullable = false)
+    @JsonIgnore
     private TaskList taskList;
 
     @Column(name = "created_at", updatable=false)

@@ -1,6 +1,7 @@
 package br.com.taskapi.domain.taskList;
 
 import br.com.taskapi.domain.taskItem.TaskItem;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -23,10 +24,10 @@ public class TaskList {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
 
-    @Column(unique = true, nullable = false)
+    @Column(unique = true)
     private String name;
 
-    @OneToMany(mappedBy = "taskList")
+    @OneToMany(mappedBy = "taskList", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<TaskItem> items;
 
     @Column(name = "created_at", updatable=false)
