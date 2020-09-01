@@ -28,7 +28,7 @@ public class TaskItem {
     @Column(columnDefinition = "boolean default false")
     private boolean finished;
 
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @ManyToOne(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
     @JoinColumn(name = "task_list_id", nullable = false)
     @JsonIgnore
     private TaskList taskList;

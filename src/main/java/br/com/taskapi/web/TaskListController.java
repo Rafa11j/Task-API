@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 @RequestMapping(value = UriMapper.TASK_LIST)
 @RestController
@@ -28,9 +29,9 @@ public class TaskListController {
         return taskListService.findAll();
     }
 
-    @GetMapping("/{name}")
-    public TaskList text(@PathVariable("name") String name) {
-        return taskListRepository.findByName(name).get();
+    @GetMapping("/{id}")
+    public TaskList show(@PathVariable("id")UUID id) {
+        return taskListService.findById(id);
     }
 
     @PostMapping
